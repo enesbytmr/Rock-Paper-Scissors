@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style src="style.css"></style>
-</head>
-<body>
-
-<h1>This Game is a console game</h1>
-<p>If you want to play write game (how many round would you play) to console <br>
-just like that game(3)</p>
-
-
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RPS Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Old School Rock Paper Scissors Game</h1>
+    </div>
+    <div class="container">
+      <div class="button" data-selection = "rock"><img class="img-size" src="1.png" alt=""></div>
+      <div class="button" data-selection = "paper"><img src="2.png" alt=""></div>
+      <div class="button" data-selection = "scissors"><img src="3.png" alt=""></div>
+    </div>
+    <div class="container" style="flex-direction: column; gap: 10px">
+      <h2>Score Board</h2>
+      <h3 class="resultText">I wonder who will gonna win</h3>
+      <div class="container" style="gap: 4px">
+        <h3 class="playerScore">0</h3>
+        -
+        <h3 class="pcScore">0</h3>
+      </div>
+    </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

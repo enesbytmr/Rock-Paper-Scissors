@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.button{
+
+    cursor: pointer;
+    transition: 1000ms;
+}
+.button:hover{
+    transform: scale(1.2);
+}
+
+
+
+
+
+.img-size{
+    width: 250px;
+    height: 250px;
+}
+
+ .resultText{
+    
+ }
