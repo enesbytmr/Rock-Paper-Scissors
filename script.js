@@ -10,7 +10,8 @@ the counter will count the score
 
 
 */
-
+let playerScoreCount = 0;
+let computerScoreCount =0;
 const getComputerChoice = () => {
   let choice = Math.floor(Math.random() * 3 + 1); //define 1-2-3
   let result;
@@ -24,51 +25,78 @@ const getComputerChoice = () => {
   return result;
 };
 
-const getPlayerChoice = () => {
-  let choice = prompt("get your choice: (Rock ,Paper , Scissors)");
-  return choice;
+const selectionButtons = document.querySelectorAll("[data-selection")
+const playerScore = document.querySelector(".playerScore")
+const pcScore = document.querySelector(".pcScore")
+const resultText = document.querySelector(".resultText")
+const playRound = () =>{
+  let pcSelect = getComputerChoice().toLowerCase()
+  let playerSelection = makeSelection(selection);
+  console.log(pcSelect)
+  console.log(playerSelection)
+
+}
+selectionButtons.forEach(selectionButton => {
+  selectionButton.addEventListener('click', e => {
+    const selectionName = selectionButton.dataset.selection
+    makeSelection(selectionName)
+  })
+})
+
+function makeSelection(selection){
+  let pcSelect = getComputerChoice().toLowerCase()
+  
+
+if (selection == "rock" && pcSelect == "rock") {
+  resultText.innerText = "Draw :("
+} else if (selection == "rock" && pcSelect == "paper") {
+  resultText.innerText = "You Lose"
+  ++computerScoreCount
+  pcScore.innerHTML = playerScoreCount;
+} else if (selection == "rock" && pcSelect == "scissors") {
+  resultText.innerText = "You Win"
+  ++playerScoreCount;
+  playerScore.innerHTML=playerScoreCount
+} else if (selection == "paper" && pcSelect == "rock") {
+  resultText.innerText = "You Win"
+  ++playerScoreCount
+  playerScore.innerHTML=playerScoreCount
+} else if (selection == "paper" && pcSelect == "paper") {
+  resultText.innerText = "Draw :("
+} else if (selection == "paper" && pcSelect == "scissors") {
+  resultText.innerText = "You Lose"
+  ++computerScoreCount;
+  pcScore.innerHTML = computerScoreCount;
+} else if (selection == "scissors" && pcSelect == "rock") {
+  resultText.innerText = "You Lose"
+  ++computerScoreCount;
+  pcScore.innerHTML = computerScoreCount;
+} else if (selection == "scissors" && pcSelect == "paper") {
+  resultText.innerText = "You Win"
+  ++playerScoreCount
+  playerScore.innerHTML=playerScoreCount
+} else if (selection == "scissors" && pcSelect == "scissors") {
+  resultText.innerText = "Draw :("
+}
+
+if(playerScoreCount == 5 && computerScoreCount < 5){
+  
+  alert('You Win')
+  playerScoreCount =0
+  computerScoreCount= 0
+  playerScore.innerHTML=playerScoreCount
+  pcScore.innerHTML = computerScoreCount;
+}else if(computerScoreCount == 5 && playerScoreCount< 5 ){
+  
+  alert('You Lose')
+  playerScoreCount =0
+  computerScoreCount= 0
+  pcScore.innerHTML = computerScoreCount;
+  playerScore.innerHTML=playerScoreCount
+}
 };
 
-const singleRoundGame = () => {
-  let pcSelect = getComputerChoice().toLowerCase();
 
-  let clientSelect = getPlayerChoice().toLowerCase();
-
-  console.log(pcSelect);
-
-
-
-  if (clientSelect == "rock" && pcSelect == "rock") {
-    console.log("Draw :(");
-  } else if (clientSelect == "rock" && pcSelect == "paper") {
-    console.log("You Lose");
-    pcScore++;
-  } else if (clientSelect == "rock" && pcSelect == "scissors") {
-    console.log("You Win ");
-    playerScore++;
-  } else if (clientSelect == "paper" && pcSelect == "rock") {
-    console.log("You Win ");
-    playerScore++;
-  } else if (clientSelect == "paper" && pcSelect == "paper") {
-    console.log("Draw :(");
-  } else if (clientSelect == "paper" && pcSelect == "scissors") {
-    console.log("You Lose");
-    pcScore++;
-  } else if (clientSelect == "scissors" && pcSelect == "rock") {
-    console.log("You Lose");
-    pcScore++;
-  } else if (clientSelect == "scissors" && pcSelect == "paper") {
-    console.log("You Win ");
-    playerScore++;
-  } else if (clientSelect == "scissors" && pcSelect == "scissors") {
-    console.log("Draw :(");
-  }
-};
-
-const game = (round) => {
-    
-  for (let i = 0; i < round; i++) {
-    singleRoundGame();
-  }
-};
+  
+  
 
